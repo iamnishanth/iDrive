@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from "./contexts/AuthContext";
-import PrivateRoute from "./components/PrivateRoute";
 
+import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import Signin from "./components/Authentication/Signin";
 
@@ -18,7 +18,6 @@ const App = () => {
               component={Dashboard}
             />
             <Route exact path="/signin" component={Signin} />
-            <Route exact path="/secret" component={Dashboard} />
           </Switch>
         </Router>
       </AuthProvider>
