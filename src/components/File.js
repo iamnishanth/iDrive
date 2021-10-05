@@ -11,8 +11,12 @@ const File = ({ file }) => {
         rel="noreferrer"
         className="relative h-32 w-32 flex justify-center items-center"
       >
-        <img src={fileIcon} alt="file-icon" className="h-32 absolute top-0" />
-        <h1 className="absolute text-xl text-blue-500 font-semibold">
+        <img
+          src={fileIcon}
+          alt="file-icon"
+          className="h-32 absolute top-0 z-10"
+        />
+        <h1 className="absolute z-10 text-xl text-blue-500 font-semibold">
           {extension[extension.length - 1]}
         </h1>
       </a>
