@@ -1,4 +1,5 @@
 import { useAuth } from "../../contexts/AuthContext";
+import { Redirect } from "react-router-dom";
 
 import { Google } from "../Icons";
 import logo from "../../images/logo.png";
@@ -38,17 +39,18 @@ const Signin = () => {
         </div>
       )}
       {!loading && currentUser && (
-        <div>
-          <h1 className="text-xl text-center mb-5">
-            Hi {currentUser.displayName}!
-          </h1>
-          <button
-            className="p-2 w-64 rounded-md border-2 border-solid border-gray-200 bg-white hover:shadow-lg transition-shadow ease-in"
-            onClick={onSignout}
-          >
-            Logout
-          </button>
-        </div>
+        // <div>
+        //   <h1 className="text-xl text-center mb-5">
+        //     Hi {currentUser.displayName}!
+        //   </h1>
+        //   <button
+        //     className="p-2 w-64 rounded-md border-2 border-solid border-gray-200 bg-white hover:shadow-lg transition-shadow ease-in"
+        //     onClick={onSignout}
+        //   >
+        //     Logout
+        //   </button>
+        // </div>
+        <Redirect to="/" />
       )}
     </div>
   );
