@@ -12,7 +12,13 @@ const App = () => {
         <Router>
           <Switch>
             <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/folder/:folderId"
+              component={Dashboard}
+            />
             <Route exact path="/signin" component={Signin} />
+            <Route exact path="/secret" component={Dashboard} />
           </Switch>
         </Router>
       </AuthProvider>

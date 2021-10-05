@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -18,5 +19,16 @@ export const auth = app.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+const firestore = app.firestore();
+
+export const database = {
+  folders: firestore.collection("folders"),
+  files: firestore.collection("files"),
+  getTimeStamp: firebase.firestore.FieldValue.serverTimestamp,
+  formatDoc: (doc) => {
+    return { id: doc.id, ...doc.data() };
+  },
+};
 
 export default app;
