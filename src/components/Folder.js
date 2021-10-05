@@ -6,7 +6,7 @@ const Folder = ({ folder }) => {
     <div className="col-4 md:col-2">
       <div className="grid place-items-center">
         <Link to={`/folder/${folder.id}`}>
-          <img src={folderIcon} alt="folder-icon" className="w-32" />
+          <img src={folderIcon} alt="folder-icon" className="w-20 md:w-32" />
           <p className="w-full truncate text-center">{folder.name}</p>
         </Link>
       </div>
