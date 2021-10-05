@@ -1,5 +1,6 @@
-import { Delete, Download, FolderPlus, Upload } from "../Icons";
 import { useDashboard } from "../../contexts/DashboardContext";
+import { Delete, Download, FolderPlus, Upload } from "../Icons";
+import UploadFile from "../UploadFile";
 
 const NavActions = () => {
   const { setToggleModal } = useDashboard();
@@ -11,7 +12,10 @@ const NavActions = () => {
       >
         <FolderPlus size={24} className="cursor-pointer" />
       </button>
-      <Upload size={24} className="text-blue-600 cursor-pointer" />
+      <label>
+        <Upload size={24} className="text-blue-600 cursor-pointer" />
+        <UploadFile />
+      </label>
       <Download size={24} className="text-blue-600 cursor-pointer" />
       <Delete size={24} className="text-blue-600 cursor-pointer" />
     </>
