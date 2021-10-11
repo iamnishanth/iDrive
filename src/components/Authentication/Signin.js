@@ -5,7 +5,7 @@ import { Google } from "../Icons";
 import logo from "../../images/logo.png";
 
 const Signin = () => {
-  const { loading, signin, currentUser, signout } = useAuth();
+  const { loading, signin, currentUser } = useAuth();
 
   const onSignin = async () => {
     try {
@@ -15,13 +15,13 @@ const Signin = () => {
     }
   };
 
-  const onSignout = async () => {
-    try {
-      await signout();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const onSignout = async () => {
+  //   try {
+  //     await signout();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   return (
     <div className="min-h-full flex items-center justify-center bg-gray-50">

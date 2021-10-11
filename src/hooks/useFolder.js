@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import { database } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
+import { useDashboard } from "../contexts/DashboardContext";
 
 const ACTIONS = {
   SELECT_FOLDER: "select-folder",
@@ -53,6 +54,7 @@ export const useFolder = (folderId = null, folder = null) => {
   });
 
   const { currentUser } = useAuth();
+  const { sort } = useDashboard();
 
   useEffect(() => {
     dispatch({ type: ACTIONS.SELECT_FOLDER, payload: { folderId, folder } });
@@ -87,7 +89,7 @@ export const useFolder = (folderId = null, folder = null) => {
     return database.folders
       .where("parentId", "==", folderId)
       .where("userId", "==", currentUser.uid)
-      .orderBy("createdAt")
+      .orderBy(sort)
       .onSnapshot((snapshot) => {
         dispatch({
           type: ACTIONS.SET_CHILD_FOLDERS,
@@ -96,13 +98,13 @@ export const useFolder = (folderId = null, folder = null) => {
           },
         });
       });
-  }, [folderId, currentUser]);
+  }, [folderId, currentUser, sort]);
 
   useEffect(() => {
     return database.files
       .where("folderId", "==", folderId)
       .where("userId", "==", currentUser.uid)
-      .orderBy("createdAt")
+      .orderBy(sort)
       .onSnapshot((snapshot) => {
         dispatch({
           type: ACTIONS.SET_CHILD_FILES,
@@ -111,7 +113,7 @@ export const useFolder = (folderId = null, folder = null) => {
           },
         });
       });
-  }, [folderId, currentUser]);
+  }, [folderId, currentUser, sort]);
 
   return state;
 };

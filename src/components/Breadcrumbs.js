@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { ROOT_FOLDER } from "../hooks/useFolder";
+import { useDashboard } from "../contexts/DashboardContext";
 import { Link } from "react-router-dom";
 import { LeftArrow } from "./Icons";
 
@@ -7,6 +9,14 @@ const Breadcrumbs = ({ currentFolder }) => {
   if (currentFolder) {
     path = [...path, ...currentFolder.path];
   }
+
+  const [optionValue, setOptionValue] = useState("createdAt");
+  const { setSort } = useDashboard();
+
+  const handleSortSelect = (e) => {
+    setOptionValue(e.target.value);
+    setSort(e.target.value);
+  };
 
   return (
     <div className="flex items-center justify-between h-11 md:h-8 w-full px-4 border-b-2 border-solid border-gray-200">
@@ -30,9 +40,14 @@ const Breadcrumbs = ({ currentFolder }) => {
             )}
           </div>
           <h1 className="font-medium truncate">{currentFolder.name}</h1>
-          <div className="w-32 text-right truncate text-blue-600 md:text-gray-500 font-medium md:font-normal">
-            Sort by Name
-          </div>
+          <select
+            className="w-32 text-right truncate bg-transparent text-blue-600 md:text-gray-500 font-medium md:font-normal"
+            value={optionValue}
+            onChange={handleSortSelect}
+          >
+            <option value="createdAt">Sort by Date</option>
+            <option value="name">Sort by Name</option>
+          </select>
         </>
       )}
     </div>

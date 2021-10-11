@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from "./contexts/AuthContext";
+import DashboardProvider from "./contexts/DashboardContext";
 
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
@@ -9,17 +10,19 @@ const App = () => {
   return (
     <div className="App">
       <AuthProvider>
-        <Router>
-          <Switch>
-            <PrivateRoute exact path="/" component={Dashboard} />
-            <PrivateRoute
-              exact
-              path="/folder/:folderId"
-              component={Dashboard}
-            />
-            <Route exact path="/signin" component={Signin} />
-          </Switch>
-        </Router>
+        <DashboardProvider>
+          <Router>
+            <Switch>
+              <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/folder/:folderId"
+                component={Dashboard}
+              />
+              <Route exact path="/signin" component={Signin} />
+            </Switch>
+          </Router>
+        </DashboardProvider>
       </AuthProvider>
     </div>
   );

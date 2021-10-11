@@ -9,12 +9,15 @@ export const useDashboard = () => {
 const DashboardProvider = ({ children }) => {
   const [toggleModal, setToggleModal] = useState(false);
   const [contentLoading, setContentLoading] = useState(false);
+  const [sort, setSort] = useState("createdAt");
 
   const value = {
     toggleModal,
     setToggleModal,
     contentLoading,
     setContentLoading,
+    sort,
+    setSort,
   };
 
   return (
