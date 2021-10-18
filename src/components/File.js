@@ -3,8 +3,6 @@ import fileIcon from "../images/file.png";
 const File = ({ file }) => {
   const extension = file.name.split(".");
 
-  console.log(fileIcon);
-
   return (
     <div className="col-4 md:col-2 flex flex-col items-center justify-center">
       <div
@@ -15,7 +13,7 @@ const File = ({ file }) => {
           {extension[extension.length - 1]}
         </h1>
       </div>
-      <p className="w-32 truncate text-center">{file.name}</p>
+      <p className="w-20 md:w-32 truncate text-center">{file.name}</p>
     </div>
   );
 };
