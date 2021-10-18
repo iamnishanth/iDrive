@@ -32,7 +32,7 @@ const AddFolderModal = ({ currentFolder }) => {
   return (
     <>
       {toggleModal && (
-        <div className="min-h-full w-full fixed top-0 left-0 flex items-center justify-center backdrop-filter backdrop-blur-xl z-20">
+        <div className="min-h-full w-full fixed top-0 left-0 flex items-center justify-center bg-white z-20">
           <div className="h-96 w-1/2 flex flex-col items-center justify-center">
             <img src={folder} alt="folder" className="w-48" />
             <input

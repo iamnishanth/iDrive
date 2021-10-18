@@ -10,8 +10,8 @@ const Navbar = () => {
   const { folder } = useFolder(folderId);
 
   return (
-    <>
-      <header className="px-4 w-full h-11 border-b-2 border-solid border-gray-200 flex items-center justify-between">
+    <div className="top-0 z-20" style={{ position: "sticky" }}>
+      <header className="px-4 w-full h-11 border-b-2 border-solid border-gray-200 bg-white flex items-center justify-between">
         <div>
           <Link to="/" className="text-xl font-semibold">
             iCloud <span className="text-blue-600">Drive</span>
@@ -25,11 +25,11 @@ const Navbar = () => {
         </div>
       </header>
       <Breadcrumbs currentFolder={folder} />
-      <div className="px-4 w-full h-11 border-b-2 border-solid border-gray-200 flex items-center justify-evenly md:hidden">
+      <div className="px-4 w-full h-11 border-b-2 border-solid border-gray-200 bg-white flex items-center justify-evenly md:hidden">
         <NavActions />
       </div>
       <AddFolderModal currentFolder={folder} />
-    </>
+    </div>
   );
 };
 

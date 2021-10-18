@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -22,8 +23,8 @@ module.exports = {
         0: 0,
         1: "1rem",
         2: "2rem",
-        3: "3rem"
-      }
+        3: "3rem",
+      },
     }),
   ],
 };
