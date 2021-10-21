@@ -3,7 +3,7 @@ import { Delete, Download, FolderPlus, Upload } from "../Icons";
 import UploadFile from "../UploadFile";
 
 const NavActions = () => {
-  const { setToggleModal } = useDashboard();
+  const { setToggleModal, selectedFile } = useDashboard();
   return (
     <>
       <button
@@ -16,8 +16,18 @@ const NavActions = () => {
         <Upload size={24} className="text-blue-600 cursor-pointer" />
         <UploadFile />
       </label>
-      <Download size={24} className="text-blue-600 cursor-pointer" />
-      <Delete size={24} className="text-blue-600 cursor-pointer" />
+      <Download
+        size={24}
+        className={`${
+          selectedFile ? "text-blue-600 cursor-pointer" : "text-gray-300"
+        }`}
+      />
+      <Delete
+        size={24}
+        className={`${
+          selectedFile ? "text-blue-600 cursor-pointer" : "text-gray-300"
+        }`}
+      />
     </>
   );
 };

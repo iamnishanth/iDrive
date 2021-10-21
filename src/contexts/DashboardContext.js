@@ -8,14 +8,14 @@ export const useDashboard = () => {
 
 const DashboardProvider = ({ children }) => {
   const [toggleModal, setToggleModal] = useState(false);
-  const [contentLoading, setContentLoading] = useState(false);
   const [sort, setSort] = useState("createdAt");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const value = {
     toggleModal,
     setToggleModal,
-    contentLoading,
-    setContentLoading,
+    selectedFile,
+    setSelectedFile,
     sort,
     setSort,
   };

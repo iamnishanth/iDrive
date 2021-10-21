@@ -1,3 +1,4 @@
+import { useDashboard } from "../contexts/DashboardContext";
 import { useFolder } from "../hooks/useFolder";
 import Folder from "./Folder";
 import File from "./File";
@@ -7,12 +8,18 @@ import { useParams } from "react-router-dom";
 const Dashboard = () => {
   const { folderId } = useParams();
   const { childFolders, childFiles } = useFolder(folderId);
+  const { setSelectedFile } = useDashboard();
 
   return (
     <div className="min-h-full flex flex-col">
       <Navbar />
       <div className="container-fluid">
-        <div className="row gy-2 mt-0">
+        <div
+          className="row gy-2 mt-0"
+          onClick={() => {
+            setSelectedFile(null);
+          }}
+        >
           {childFolders.length > 0 && (
             <>
               {childFolders.map((childFolder) => (
