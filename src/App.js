@@ -5,6 +5,7 @@ import DashboardProvider from "./contexts/DashboardContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import Signin from "./components/Authentication/Signin";
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
                 component={Dashboard}
               />
               <Route exact path="/signin" component={Signin} />
+              <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </Router>
         </DashboardProvider>

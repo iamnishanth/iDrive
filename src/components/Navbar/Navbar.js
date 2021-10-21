@@ -36,7 +36,9 @@ const Navbar = () => {
             }
           }}
         >
-          <h1 className="text-lg">iamNishanth</h1>
+          <Link to="/profile" className="text-lg">
+            iamNishanth
+          </Link>
         </div>
       </header>
       <Breadcrumbs currentFolder={folder} />
