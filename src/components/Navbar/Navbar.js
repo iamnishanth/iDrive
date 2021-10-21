@@ -5,11 +5,13 @@ import { useFolder } from "../../hooks/useFolder";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs";
 import { useDashboard } from "../../contexts/DashboardContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Navbar = () => {
   const { folderId } = useParams();
   const { folder } = useFolder(folderId);
   const { selectedFile, setSelectedFile } = useDashboard();
+  const { currentUser } = useAuth();
 
   return (
     <div className="top-0 z-20" style={{ position: "sticky" }}>
@@ -36,8 +38,8 @@ const Navbar = () => {
             }
           }}
         >
-          <Link to="/profile" className="text-lg">
-            iamNishanth
+          <Link to="/profile" className="text-lg truncate">
+            {currentUser.displayName}!
           </Link>
         </div>
       </header>
