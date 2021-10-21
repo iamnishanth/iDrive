@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const Dashboard = () => {
   const { folderId } = useParams();
   const { childFolders, childFiles } = useFolder(folderId);
-  const { setSelectedFile } = useDashboard();
+  const { selectedFile, setSelectedFile } = useDashboard();
 
   return (
     <div className="min-h-full flex flex-col">
@@ -17,7 +17,9 @@ const Dashboard = () => {
         <div
           className="row gy-2 mt-0"
           onClick={() => {
-            setSelectedFile(null);
+            if (selectedFile !== null) {
+              setSelectedFile(null);
+            }
           }}
         >
           {childFolders.length > 0 && (

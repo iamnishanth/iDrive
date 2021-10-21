@@ -9,14 +9,16 @@ import { useDashboard } from "../../contexts/DashboardContext";
 const Navbar = () => {
   const { folderId } = useParams();
   const { folder } = useFolder(folderId);
-  const { setSelectedFile } = useDashboard();
+  const { selectedFile, setSelectedFile } = useDashboard();
 
   return (
     <div className="top-0 z-20" style={{ position: "sticky" }}>
       <header className="px-4 w-full h-11 border-b-2 border-solid border-gray-200 bg-white flex items-center justify-between">
         <div
           onClick={() => {
-            setSelectedFile(null);
+            if (selectedFile !== null) {
+              setSelectedFile(null);
+            }
           }}
         >
           <Link to="/" className="text-xl font-semibold">
@@ -29,7 +31,9 @@ const Navbar = () => {
         <div
           className="flex items-center"
           onClick={() => {
-            setSelectedFile(null);
+            if (selectedFile !== null) {
+              setSelectedFile(null);
+            }
           }}
         >
           <h1 className="text-lg">iamNishanth</h1>
