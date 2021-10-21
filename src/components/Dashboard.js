@@ -38,7 +38,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      {childFolders.length === 0 && (
+      {childFolders.length === 0 && childFiles.length === 0 && (
         <div className="flex flex-col flex-1 items-center justify-center">
           <h1 className="text-3xl text-gray-400">This folder is empty</h1>
           <p className="text-gray-400 py-3">
