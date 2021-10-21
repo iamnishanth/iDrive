@@ -39,7 +39,7 @@ const Navbar = () => {
           }}
         >
           <Link to="/profile" className="text-lg truncate">
-            {currentUser.displayName}!
+            {currentUser.displayName}
           </Link>
         </div>
       </header>
