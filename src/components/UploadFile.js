@@ -19,6 +19,13 @@ const UploadFile = () => {
       return;
     }
 
+    const fileSize = (file.size / (1024 * 1024)).toFixed(2);
+
+    if (fileSize > 15) {
+      alert("Max upload size is 15mb");
+      return;
+    }
+
     const id = uuidv4();
     setUploadingFiles((prev) => [
       ...prev,
