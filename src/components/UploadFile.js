@@ -65,13 +65,26 @@ const UploadFile = () => {
         });
 
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          database.files.add({
-            url,
-            name: file.name,
-            createdAt: database.getTimeStamp(),
-            folderId: folder.id,
-            userId: currentUser.uid,
-          });
+          database.files
+            .where("name", "==", file.name)
+            .where("userId", "==", currentUser.uid)
+            .where("folderId", "==", folder.id)
+            .get()
+            .then((existingFiles) => {
+              const existingFile = existingFiles.docs[0];
+              if (existingFile) {
+                alert("File already exist. Overwriting with new file.");
+                existingFile.ref.update({ url: url });
+              } else {
+                database.files.add({
+                  url,
+                  name: file.name,
+                  createdAt: database.getTimeStamp(),
+                  folderId: folder.id,
+                  userId: currentUser.uid,
+                });
+              }
+            });
         });
       }
     );
