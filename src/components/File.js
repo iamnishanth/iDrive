@@ -32,18 +32,26 @@ const File = ({ file }) => {
 
   return (
     <div
-      className={`col-4 md:col-2 flex flex-col items-center justify-center ${
+      className={`col-4 md:col-2 flex flex-col items-center justify-center rounded-lg ${
         selectedFile?.id === file.id ? "bg-blue-100" : ""
       }`}
     >
       <div
-        style={{ backgroundImage: `url("${fileIcon}")` }}
-        className="h-20 md:h-32 w-20 md:w-32 grid place-items-center bg-contain bg-center bg-no-repeat cursor-pointer"
+        style={{
+          backgroundImage: `url("${
+            ["jpeg", "jpg", "png"].includes(extension[extension.length - 1])
+              ? file.url
+              : fileIcon
+          }")`,
+        }}
+        className="h-20 md:h-32 w-20 md:w-32 grid place-items-center bg-contain bg-center bg-no-repeat cursor-pointer rounded-lg"
         onClick={() => setClicks(clicks + 1)}
       >
-        <h1 className="text-md md:text-xl text-blue-500 font-semibold select-none">
-          {extension[extension.length - 1]}
-        </h1>
+        {!["jpeg", "jpg", "png"].includes(extension[extension.length - 1]) && (
+          <h1 className="text-md md:text-xl text-blue-500 font-semibold select-none">
+            {extension[extension.length - 1]}
+          </h1>
+        )}
       </div>
       <p className="w-20 md:w-32 truncate text-center">{file.name}</p>
     </div>

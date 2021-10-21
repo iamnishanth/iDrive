@@ -83,7 +83,7 @@ const UploadFile = () => {
       {ReactDOM.createPortal(
         <div className="absolute bottom-8 right-8 w-64 z-50">
           {uploadingFiles.map((file) => (
-            <Progressbar file={file} />
+            <Progressbar file={file} key={file.id} />
           ))}
         </div>,
         document.body
