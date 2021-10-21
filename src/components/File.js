@@ -12,7 +12,6 @@ const File = ({ file }) => {
   };
 
   const doubleClickHandler = () => {
-    console.log("doubleClick");
     window.open(file.url);
   };
 

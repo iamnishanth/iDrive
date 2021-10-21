@@ -11,7 +11,7 @@ const Breadcrumbs = ({ currentFolder }) => {
   }
 
   const [optionValue, setOptionValue] = useState("createdAt");
-  const { setSort } = useDashboard();
+  const { setSort, setSelectedFile } = useDashboard();
 
   const handleSortSelect = (e) => {
     setOptionValue(e.target.value);
@@ -19,7 +19,12 @@ const Breadcrumbs = ({ currentFolder }) => {
   };
 
   return (
-    <div className="flex items-center justify-between h-11 md:h-8 w-full px-4 border-b-2 border-solid border-gray-200 bg-white">
+    <div
+      className="flex items-center justify-between h-11 md:h-8 w-full px-4 border-b-2 border-solid border-gray-200 bg-white"
+      onClick={() => {
+        setSelectedFile(null);
+      }}
+    >
       {currentFolder && (
         <>
           <div className="w-32 flex items-center">
